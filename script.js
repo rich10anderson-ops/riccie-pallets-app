@@ -31,3 +31,12 @@ function generatePalette() {
 generateBtn.addEventListener("click", generatePalette);
 generatePalette();
 
+const themeToggle = document.getElementById("themeToggle");
+let darkMode = true;
+
+themeToggle.addEventListener("click", () => {
+  darkMode = !darkMode;
+  document.body.classList.toggle("light-mode");
+
+  themeToggle.textContent = darkMode ? "🌙" : "☀️";
+});
