@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Riccie'Pallets</title>
   <link rel="stylesheet" href="styles.css" />
+  
 </head>
 
 <style>  * {
@@ -18,12 +19,11 @@
     }
     
     body {
-      font-family: Arial, sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', 
+             Consolas, 'Courier New', monospace;
     }
-    
     .hero {
+
       height: 50vh;
       background: linear-gradient(135deg, #6b1aa499 0%, #764ba2 100%);
       color: white;
@@ -46,18 +46,41 @@
       text-align: center;
     }
     
-    .navbar {
+   .contenedor {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #333;
-  color: white;
+justify-content: right;
 }
 </style>
 </head>
 <body>
-  
+  <header class="toolbar">
+  <div class="toolbar__logo">
+    🎨 Ricci'ePallets
+  </div>
+
+  <nav class="toolbar__nav">
+   <a href="#" class="toolbar__link">🎯 Explorar</a>
+<a href="#" class="toolbar__link">🎨 Generar</a>
+<a href="#" class="toolbar__link">📦 Paletas Guardadas</a>
+<a href="#" class="toolbar__link">✍️ Blog</a>
+<a href="#" class="toolbar__link">🌈 Populares</a>
+
+  </nav>
+
+  <div class="toolbar__actions">
+    <input 
+      type="text" 
+      class="toolbar__search" 
+      placeholder="Buscar colores o paletas..."
+    />
+
+    <button id="themeToggle" class="toolbar__icon-btn">🌙</button>
+
+    <button class="toolbar__login">Iniciar sesión</button>
+    <button class="toolbar__register">Registrarse</button>
+  </div>
+</header>
+
     <section class="hero">
     <h1>Bienvenido a Ricci'ePallets 🎨 </h1>
     <p>Aqui, encontraras el color que estas buscando para tus proyectos a gran escala</p>
@@ -74,16 +97,12 @@
     <button id="generateBtn">🔄 Generar nueva paleta</button>
   </main>
 
-   
-
 </head>
-
-
+<script src="script.js"></script>
 
   <footer>
     <p>Creado por Richard Gonzalez - Software Developer</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
