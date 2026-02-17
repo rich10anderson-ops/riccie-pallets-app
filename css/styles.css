@@ -62,8 +62,26 @@ body {
   font-size: clamp(2rem, 5vw, 4rem);
   margin-bottom: 1rem;
   color: white;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  animation: titleGlow 1.5s ease-in-out infinite;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+               0 0 20px rgba(118, 75, 162, 0.6),
+               0 0 40px rgba(102, 126, 234, 0.4);
+  animation: titleGlowHero 2s ease-in-out infinite, fadeInUp 1s ease forwards;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* Animación glow neon para hero title */
+@keyframes titleGlowHero {
+  0%, 100% {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+                 0 0 20px rgba(118, 75, 162, 0.6),
+                 0 0 40px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+                 0 0 30px rgba(118, 75, 162, 0.8),
+                 0 0 60px rgba(102, 126, 234, 0.6);
+  }
 }
 
 .hero__subtitle {
@@ -248,42 +266,33 @@ footer {
   background-clip: text;
 }
 
-/* Título con efecto neon púrpura */
+/* Título con efecto neon púrpura suave */
 .palette-section__title--neon {
-  color: #764ba2;
+  color: white;
   -webkit-text-fill-color: unset;
   background: unset;
   text-shadow: 
-    0 0 10px #764ba2,
-    0 0 20px #764ba2,
-    0 0 30px #764ba2,
-    0 0 40px #667eea,
-    0 0 70px #667eea,
-    0 0 80px #667eea;
-  animation: neonGlow 2s ease-in-out infinite, titleSlideIn 0.8s ease forwards;
+    0 0 8px rgba(118, 75, 162, 0.5),
+    0 0 15px rgba(102, 126, 234, 0.3),
+    0 0 20px rgba(118, 75, 162, 0.4);
+  animation: neonGlowSuave 2s ease-in-out infinite, titleSlideIn 0.8s ease forwards;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
-/* Animación de glow neon */
-@keyframes neonGlow {
+/* Animación de glow neon SUAVE (menos intenso) */
+@keyframes neonGlowSuave {
   0%, 100% {
     text-shadow: 
-      0 0 10px #764ba2,
-      0 0 20px #764ba2,
-      0 0 30px #764ba2,
-      0 0 40px #667eea,
-      0 0 70px #667eea,
-      0 0 80px #667eea;
+      0 0 8px rgba(118, 75, 162, 0.5),
+      0 0 15px rgba(102, 126, 234, 0.3),
+      0 0 20px rgba(118, 75, 162, 0.4);
   }
   50% {
     text-shadow: 
-      0 0 15px #764ba2,
-      0 0 25px #764ba2,
-      0 0 35px #764ba2,
-      0 0 50px #667eea,
-      0 0 85px #667eea,
-      0 0 100px #667eea;
+      0 0 12px rgba(118, 75, 162, 0.7),
+      0 0 25px rgba(102, 126, 234, 0.5),
+      0 0 30px rgba(118, 75, 162, 0.6);
   }
 }
 
@@ -431,18 +440,6 @@ footer {
   }
 }
 
-/* Animación del título con glow */
-@keyframes titleGlow {
-  0%, 100% {
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 
-                 0 0 10px rgba(102, 126, 234, 0.5);
-  }
-  50% {
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 
-                 0 0 25px rgba(118, 75, 162, 0.7);
-  }
-}
-
 /* Animación del subtítulo */
 @keyframes subtitleFadeIn {
   from {
@@ -546,36 +543,48 @@ footer {
   align-items: center;
 }
 
-.toolbar__link {
-  color: white;
-  text-decoration: none;
-  font-size: 0.95rem;
-  opacity: 0.8;
-  transition: 0.2s;
-}
-
-.toolbar__link:hover {
-  opacity: 1;
-  color: #ffce00;
-}
-
 /* Botones de acción en la navbar */
 .toolbar__action-btn {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  font-size: 1.2rem;
   cursor: pointer;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 8px;
   transition: all 0.3s ease;
   color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn-icon {
+  font-size: 1.3rem;
+  display: inline-block;
+}
+
+.btn-label {
+  display: inline-block;
+}
+
+/* Mobile - solo icono */
+@media (max-width: 768px) {
+  .btn-label {
+    display: none;
+  }
+  
+  .toolbar__action-btn {
+    padding: 8px 10px;
+  }
 }
 
 .toolbar__action-btn:hover {
   border-color: #ffce00;
   background: rgba(255, 206, 0, 0.15);
   box-shadow: 0 0 15px rgba(255, 206, 0, 0.4);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .toolbar__action-btn:active {
@@ -589,55 +598,19 @@ footer {
   gap: 12px;
 }
 
-/* Search */
-.toolbar__search {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: none;
-  outline: none;
-  font-size: 0.9rem;
-}
-
-/* Icon Button */
+/* Icon Button - Solo el theme toggle */
 .toolbar__icon-btn {
   background: transparent;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
   color: white;
+  transition: transform 0.3s ease;
+  padding: 8px 12px;
 }
 
-/* Login */
-.toolbar__login {
-  background: transparent;
-  border: 1px solid white;
-  color: white;
-  padding: 6px 16px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.toolbar__login:hover {
-  background: white;
-  color: #333;
-}
-
-/* Register CTA */
-.toolbar__register {
-  background: #ffce00;
-  border: none;
-  color: #333;
-  padding: 8px 20px;
-  border-radius: 999px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 5px 20px rgba(255,206,0,0.5);
-  transition: 0.2s;
-}
-
-.toolbar__register:hover {
-  transform: translateY(-2px);
+.toolbar__icon-btn:hover {
+  transform: scale(1.2);
 }
 
 .light-mode {
@@ -652,11 +625,6 @@ footer {
 .light-mode .toolbar__link,
 .light-mode .toolbar__logo {
   color: #333;
-}
-
-
-.toolbar__link:hover {
-  transform: translateY(-2px);
 }
 
 /* ===== NUEVAS SECCIONES ===== */
